@@ -6,10 +6,11 @@ const router = express.Router()
 const route = require("./routes/users")
 const app = express()
 
+let dbURI = "mongodb://localhost/pies"
 app.use(express.json())
 app.use("/users", route)
 
-mongoose.connect(process.env.DB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.DB_URL|| dbURI , {useNewUrlParser: true, useUnifiedTopology: true})
 const db = mongoose.connection
 
 db.on("error", (err)=>{console.error(err)})
