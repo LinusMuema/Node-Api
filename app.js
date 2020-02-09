@@ -10,7 +10,7 @@ let dbURI = "mongodb://localhost/pies"
 app.use(express.json())
 app.use("/users", route)
 
-mongoose.connect(process.env.DB_URL|| dbURI , {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.MONGODB_URI|| dbURI , {useNewUrlParser: true, useUnifiedTopology: true})
 const db = mongoose.connection
 
 db.on("error", (err)=>{console.error(err)})
